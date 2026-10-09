@@ -1,0 +1,6 @@
+{
+  "name": "MGA Quality Sentinel - New Launch Rating & Complaint Analyzer",
+  "description": "Multi-retailer quality compliance monitoring system for MGA new launches on Walmart, Amazon, Target, and Costco (US & CA), tracking ratings below 3.0, automated complaint analysis, and Excel exports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
