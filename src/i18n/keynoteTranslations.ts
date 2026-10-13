@@ -170,7 +170,7 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock0SkuSub: '覆盖美加 7 站点',
     mock0AvgRatingLabel: '综合平均评分',
     mock0AvgRatingSub: '高于行业基准 0.4',
-    mock0AlertLabel: '低分预警 (< 3.0★)',
+    mock0AlertLabel: '低分预警 (< 3.0)',
     mock0AlertCount: '{count} 款',
     mock0AlertSub: '秒级标红与闭环',
     mock0SafetyLabel: '安全隐患 (Critical)',
@@ -178,9 +178,9 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock0SafetySub: '电池过热阻断',
     mock0LiveStream: 'LIVE CHANNELS STREAM',
     mock0Channels: 'AMAZON · WALMART · TARGET · COSTCO',
-    mock0ChainsawIssue: '2.7 ★ (低于警戒线)',
-    mock0PixieIssue: '2.8 ★ (翼翅断裂)',
-    mock0RainbowIssue: '4.7 ★ (品质优异)',
+    mock0ChainsawIssue: '2.7 (低于警戒线)',
+    mock0PixieIssue: '2.8 (翼翅断裂)',
+    mock0RainbowIssue: '4.7 (品质优异)',
 
     // Slide 1
     mock1ChaosTitle: '传统人工巡检之痛',
@@ -193,7 +193,7 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock1ChaosFooter: '平均延误: 48 小时 · 错失黄金处置期',
     mock1SentinelTitle: 'MGA Sentinel 敏捷防护',
     mock1SentinelItem1Title: '4.2 秒极速核查：',
-    mock1SentinelItem1Desc: '自动化调度，毫秒级抓取最新星级。',
+    mock1SentinelItem1Desc: '自动化调度，毫秒级抓取最新评分。',
     mock1SentinelItem2Title: '100% 全域覆盖：',
     mock1SentinelItem2Desc: '涵盖 Walmart、Amazon、Target、Costco。',
     mock1SentinelItem3Title: '3.0 红线自动拦截：',
@@ -212,10 +212,10 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
 
     // Slide 3
     mock3SliderTitle: '评分预警警戒线调节控制器',
-    mock3CurrentBaseline: '当前基准: {threshold} ★',
-    mock3Relaxed: '2.0★ (宽松)',
-    mock3Redline: '3.0★ (红线基准)',
-    mock3Strict: '4.5★ (严苛)',
+    mock3CurrentBaseline: '当前基准: {threshold}',
+    mock3Relaxed: '2.0 (宽松)',
+    mock3Redline: '3.0 (红线基准)',
+    mock3Strict: '4.5 (严苛)',
     mock3AlertHeader: '🚨 触发红线警报的渠道商品清单 ({count} 款)',
     mock3AlertSub: '需合规团队优先介入',
     mock3ChainsawIssue: 'UPC: 050743663189 · 核心槽点: 电机耐久',
@@ -229,7 +229,7 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock4FuncCat: '功能失效与电机耐久 (Function issue)',
     mock4PkgCat: '包装破损与运输挤压 (Packaging)',
     mock4ReviewTag: 'VERIFIED PURCHASE · AMAZON US',
-    mock4ReviewStars: '1.0 ★ 差评',
+    mock4ReviewStars: '1.0 差评',
     mock4Quote: '“The motor stopped working after just two hours. My kid cried. We also noticed the battery compartment got unusually warm!”',
     mock4TagBattery: '#电池发烫',
     mock4TagMotor: '#电机失效',
@@ -304,7 +304,7 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock0SkuSub: '覆蓋美加 7 站點',
     mock0AvgRatingLabel: '綜合平均評分',
     mock0AvgRatingSub: '高於行業基準 0.4',
-    mock0AlertLabel: '低分預警 (< 3.0★)',
+    mock0AlertLabel: '低分預警 (< 3.0)',
     mock0AlertCount: '{count} 款',
     mock0AlertSub: '秒級標紅與閉環',
     mock0SafetyLabel: '安全隱患 (Critical)',
@@ -312,9 +312,9 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock0SafetySub: '電池過熱阻斷',
     mock0LiveStream: 'LIVE CHANNELS STREAM',
     mock0Channels: 'AMAZON · WALMART · TARGET · COSTCO',
-    mock0ChainsawIssue: '2.7 ★ (低於警戒線)',
-    mock0PixieIssue: '2.8 ★ (翼翅斷裂)',
-    mock0RainbowIssue: '4.7 ★ (品質優異)',
+    mock0ChainsawIssue: '2.7 (低於警戒線)',
+    mock0PixieIssue: '2.8 (翼翅斷裂)',
+    mock0RainbowIssue: '4.7 (品質優異)',
 
     // Slide 1
     mock1ChaosTitle: '傳統人工巡檢之痛',
@@ -327,7 +327,7 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock1ChaosFooter: '平均延誤: 48 小時 · 錯失黃金處置期',
     mock1SentinelTitle: 'MGA Sentinel 敏捷防護',
     mock1SentinelItem1Title: '4.2 秒極速核查：',
-    mock1SentinelItem1Desc: '自動化調度，毫秒級抓取最新星級。',
+    mock1SentinelItem1Desc: '自動化調度，毫秒級抓取最新評分。',
     mock1SentinelItem2Title: '100% 全域覆蓋：',
     mock1SentinelItem2Desc: '涵蓋 Walmart、Amazon、Target、Costco。',
     mock1SentinelItem3Title: '3.0 紅線自動攔截：',
@@ -346,10 +346,10 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
 
     // Slide 3
     mock3SliderTitle: '評分預警警戒線調節控制器',
-    mock3CurrentBaseline: '當前基準: {threshold} ★',
-    mock3Relaxed: '2.0★ (寬鬆)',
-    mock3Redline: '3.0★ (紅線基準)',
-    mock3Strict: '4.5★ (嚴苛)',
+    mock3CurrentBaseline: '當前基準: {threshold}',
+    mock3Relaxed: '2.0 (寬鬆)',
+    mock3Redline: '3.0 (紅線基準)',
+    mock3Strict: '4.5 (嚴苛)',
     mock3AlertHeader: '🚨 觸發紅線警報的渠道商品清單 ({count} 款)',
     mock3AlertSub: '需合規團隊優先介入',
     mock3ChainsawIssue: 'UPC: 050743663189 · 核心槽點: 馬達耐久',
@@ -363,7 +363,7 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock4FuncCat: '功能失效與馬達耐久 (Function issue)',
     mock4PkgCat: '包裝破損與運輸擠壓 (Packaging)',
     mock4ReviewTag: 'VERIFIED PURCHASE · AMAZON US',
-    mock4ReviewStars: '1.0 ★ 負評',
+    mock4ReviewStars: '1.0 負評',
     mock4Quote: '“The motor stopped working after just two hours. My kid cried. We also noticed the battery compartment got unusually warm!”',
     mock4TagBattery: '#電池發燙',
     mock4TagMotor: '#馬達失效',
@@ -438,7 +438,7 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock0SkuSub: '7 US & CA Retail Platforms',
     mock0AvgRatingLabel: 'Overall Avg Rating',
     mock0AvgRatingSub: '+0.4 above toy baseline',
-    mock0AlertLabel: 'Low Rating Alerts (< 3.0★)',
+    mock0AlertLabel: 'Low Rating Alerts (< 3.0)',
     mock0AlertCount: '{count} SKUs',
     mock0AlertSub: 'Instant red flags & closed loop',
     mock0SafetyLabel: 'Critical Safety Hazards',
@@ -446,9 +446,9 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock0SafetySub: 'Battery thermal quarantine',
     mock0LiveStream: 'LIVE CHANNELS STREAM',
     mock0Channels: 'AMAZON · WALMART · TARGET · COSTCO',
-    mock0ChainsawIssue: '2.7 ★ (Below 3.0 Alert)',
-    mock0PixieIssue: '2.8 ★ (Wing Snapping)',
-    mock0RainbowIssue: '4.7 ★ (Quality Benchmark)',
+    mock0ChainsawIssue: '2.7 (Below 3.0 Alert)',
+    mock0PixieIssue: '2.8 (Wing Snapping)',
+    mock0RainbowIssue: '4.7 (Quality Benchmark)',
 
     // Slide 1
     mock1ChaosTitle: 'The Cost of Manual Auditing',
@@ -461,10 +461,10 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock1ChaosFooter: 'Average delay: 48 hours · Missed containment window',
     mock1SentinelTitle: 'MGA Sentinel Agile Defense',
     mock1SentinelItem1Title: '4.2s Fast Audit: ',
-    mock1SentinelItem1Desc: 'Automated polling surfaces fresh star ratings in milliseconds.',
+    mock1SentinelItem1Desc: 'Automated polling surfaces fresh ratings in milliseconds.',
     mock1SentinelItem2Title: '100% Omni-Channel: ',
     mock1SentinelItem2Desc: 'Seamlessly tracks Walmart, Amazon, Target, and Costco.',
-    mock1SentinelItem3Title: '3.0★ Auto Intercept: ',
+    mock1SentinelItem3Title: '3.0 Auto Intercept: ',
     mock1SentinelItem3Desc: 'Immediate escalation and root cause tagging upon breach.',
     mock1SentinelFooter: 'Inspection latency: 4.2 seconds · 24/7 fully automated',
 
@@ -480,10 +480,10 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
 
     // Slide 3
     mock3SliderTitle: 'Compliance Alert Threshold Controller',
-    mock3CurrentBaseline: 'Current Threshold: {threshold} ★',
-    mock3Relaxed: '2.0★ (Relaxed)',
-    mock3Redline: '3.0★ (Standard Red Line)',
-    mock3Strict: '4.5★ (Strict)',
+    mock3CurrentBaseline: 'Current Threshold: {threshold}',
+    mock3Relaxed: '2.0 (Relaxed)',
+    mock3Redline: '3.0 (Standard Red Line)',
+    mock3Strict: '4.5 (Strict)',
     mock3AlertHeader: '🚨 Channels Breaching Red Line Threshold ({count} Items)',
     mock3AlertSub: 'Requires immediate engineering triage',
     mock3ChainsawIssue: 'UPC: 050743663189 · Core Issue: Motor Durability',
@@ -497,7 +497,7 @@ export const KEYNOTE_UI: Record<Language, KeynoteUIStrings> = {
     mock4FuncCat: 'Functional Failures & Motor Durability (Function)',
     mock4PkgCat: 'Packaging Damage & Transit Crushing (Packaging)',
     mock4ReviewTag: 'VERIFIED PURCHASE · AMAZON US',
-    mock4ReviewStars: '1.0 ★ Review',
+    mock4ReviewStars: '1.0 Review',
     mock4Quote: '“The motor stopped working after just two hours. My kid cried. We also noticed the battery compartment got unusually warm!”',
     mock4TagBattery: '#BatteryOverheating',
     mock4TagMotor: '#MotorFailure',
@@ -658,7 +658,7 @@ export function getKeynoteSlides(lang: Language, options: SlideContextOptions): 
             badge: '02 / 動態自適應滑塊',
             heading: '靈活調控 2.5 ~ 4.5 警戒線',
             detail: '針對成熟爆款可收緊至 4.0 分嚴苛監控，針對爬坡新品可維持 3.0 分科學護航，全局即時無縫響應。',
-            metric: { label: '當前預警閾值', value: `${threshold.toFixed(1)} ★` }
+            metric: { label: '當前預警閾值', value: `${threshold.toFixed(1)} 分` }
           },
           {
             badge: '03 / 優先級集中管控',
@@ -774,7 +774,7 @@ export function getKeynoteSlides(lang: Language, options: SlideContextOptions): 
             badge: '02 / 原聲驅動研發',
             heading: '打造更經得起考驗的好產品',
             detail: '將真實消費者的點讚與批評，沉澱為 MGA 產品知識庫，持續拉大與行業競品的品質護城河。',
-            metric: { label: '客戶滿意度', value: '4.8 ★ 目標' }
+            metric: { label: '客戶滿意度', value: '4.8 分 目標' }
           },
           {
             badge: '03 / 立即進入體驗',
@@ -880,22 +880,22 @@ export function getKeynoteSlides(lang: Language, options: SlideContextOptions): 
         id: 'threshold',
         category: 'threshold',
         tag: 'THE 3.0 THRESHOLD · RIGOROUS STANDARDS',
-        title: 'The 3.0★ red line. Zero compromise on quality.',
+        title: 'The 3.0 red line. Zero compromise on quality.',
         subtitle: 'Strict automated threshold interception instantly flags vulnerable new launches dropping below compliance standards.',
         speakerNotes:
           '“Why do we anchor our alert baseline strictly at 3.0 stars? The data is unmistakable: 3.0 is the algorithm death line and the psychological tipping point for parents. Below 3.0, return rates surge by 320%. Sentinel enforces zero tolerance with immediate full-screen red alerts.”',
         steps: [
           {
             badge: '01 / Commercial Baseline',
-            heading: 'The 3.0★ Watershed Metric',
+            heading: 'The 3.0 Watershed Metric',
             detail: 'Big data proves: dropping below 3.0 triggers punitive retail search throttling and buyer order cutbacks. This is MGA’s line in the sand.',
             metric: { label: 'Return Surge Point', value: '+320% Risk' }
           },
           {
             badge: '02 / Adaptive Calibration',
-            heading: 'Flexible 2.5★ ~ 4.5★ Sensitivity Slider',
-            detail: 'Tighten to 4.0★ for mature bestsellers; anchor at 3.0★ for ramp-up launches. Instant global threshold recalibration across all views.',
-            metric: { label: 'Alert Threshold', value: `${threshold.toFixed(1)} ★` }
+            heading: 'Flexible 2.5 ~ 4.5 Sensitivity Slider',
+            detail: 'Tighten to 4.0 for mature bestsellers; anchor at 3.0 for ramp-up launches. Instant global threshold recalibration across all views.',
+            metric: { label: 'Alert Threshold', value: `${threshold.toFixed(1)}` }
           },
           {
             badge: '03 / Priority Triage',
@@ -1011,7 +1011,7 @@ export function getKeynoteSlides(lang: Language, options: SlideContextOptions): 
             badge: '02 / Customer Voice in R&D',
             heading: 'Crafting Products That Stand the Test of Time',
             detail: 'Synthesizing verified praise and criticism into MGA’s product knowledge repository, expanding our quality moat over competitors.',
-            metric: { label: 'Satisfaction Goal', value: '4.8 ★ Target' }
+            metric: { label: 'Satisfaction Goal', value: '4.8 Target' }
           },
           {
             badge: '03 / Launch the Platform',
@@ -1132,7 +1132,7 @@ export function getKeynoteSlides(lang: Language, options: SlideContextOptions): 
           badge: '02 / 动态自适应滑块',
           heading: '灵活调控 2.5 ~ 4.5 警戒线',
           detail: '针对成熟爆款可收紧至 4.0 分严苛监控，针对爬坡新品可维持 3.0 分科学护航，全局实时无缝响应。',
-          metric: { label: '当前预警阈值', value: `${threshold.toFixed(1)} ★` }
+          metric: { label: '当前预警阈值', value: `${threshold.toFixed(1)} 分` }
         },
         {
           badge: '03 / 优先级集中管控',
@@ -1248,7 +1248,7 @@ export function getKeynoteSlides(lang: Language, options: SlideContextOptions): 
           badge: '02 / 原声驱动研发',
           heading: '打造更经得起推敲的好产品',
           detail: '将真实消费者的点赞与批评，沉淀为 MGA 产品知识库，持续拉大与行业竞品的品质护城河。',
-          metric: { label: '客户满意度', value: '4.8 ★ 目标' }
+          metric: { label: '客户满意度', value: '4.8 分 目标' }
         },
         {
           badge: '03 / 立即进入体验',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, AlertTriangle, ShieldAlert, Wrench, Download, Star, ExternalLink, Sparkles } from 'lucide-react';
+import { X, AlertTriangle, ShieldAlert, Wrench, Download, ExternalLink, ShieldCheck } from 'lucide-react';
 import { ProductItem, PLATFORMS } from '../types/qa';
 import { ExportService } from '../services/exportService';
 import { useTranslation } from '../i18n/LanguageContext';
@@ -132,22 +132,27 @@ export const ComplaintAnalysisModal: React.FC<ComplaintAnalysisModalProps> = ({
         <div className="p-6 border-b border-slate-100 flex items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700">
+              <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
                 {platInfo.name}
               </span>
               {isAlert ? (
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200/60 flex items-center gap-1">
-                  <AlertTriangle className="w-3 h-3 fill-rose-600 text-white" />
-                  {t.ratingAlert} ({product.rating.toFixed(1)} ★)
+                <span className="text-xs font-semibold text-rose-600 flex items-center gap-1">
+                  <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
+                  {t.ratingAlert} ({product.rating.toFixed(1)})
                 </span>
               ) : (
-                <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60">
-                  {t.ratingOk} ({product.rating.toFixed(1)} ★)
+                <span className="text-xs font-semibold text-[#0071e3]">
+                  {t.ratingOk} ({product.rating.toFixed(1)})
                 </span>
               )}
             </div>
 
             <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-slate-900 mt-2 leading-snug">
+              {product.isNewLaunch && (
+                <sup className="text-xs font-bold text-[#F37021] select-none leading-none mr-1.5 -top-1 relative tracking-tight inline-block">
+                  {t.tagNewLaunch}
+                </sup>
+              )}
               {product.name}
             </h2>
 
@@ -185,7 +190,7 @@ export const ComplaintAnalysisModal: React.FC<ComplaintAnalysisModalProps> = ({
           <div className="bg-slate-50/70 border border-slate-200/70 rounded-2xl p-5 space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-slate-900 font-semibold text-xs">
-                <Sparkles className="w-4 h-4 text-amber-500 fill-amber-400" />
+                <ShieldCheck className="w-4 h-4 text-slate-700" />
                 <span>{t.capaTitle}</span>
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-200 text-slate-700 font-medium">
@@ -344,18 +349,10 @@ export const ComplaintAnalysisModal: React.FC<ComplaintAnalysisModalProps> = ({
                     >
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <div className="flex items-center gap-2">
-                          <div className="flex items-center text-amber-500 font-bold font-mono">
-                            {Array.from({ length: 5 }).map((_, i) => (
-                              <Star
-                                key={i}
-                                className={`w-3.5 h-3.5 ${
-                                  i < rev.rating
-                                    ? 'fill-amber-400 text-amber-400'
-                                    : 'text-slate-200 fill-slate-100'
-                                }`}
-                              />
-                            ))}
-                            <span className="ml-1 text-slate-700 text-xs font-mono">{rev.rating}.0</span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-mono font-semibold text-xs px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 tabular-nums">
+                              {rev.rating}.0 / 5.0
+                            </span>
                           </div>
 
                           <span className="text-slate-300">·</span>

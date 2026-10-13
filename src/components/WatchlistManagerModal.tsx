@@ -294,11 +294,11 @@ export const WatchlistManagerModal: React.FC<WatchlistManagerModalProps> = ({
                     {items.map((it) => (
                       <tr key={it.id} className="hover:bg-slate-50/60">
                         <td className="py-3 px-4 font-medium text-slate-900">
-                          <div className="flex items-center gap-1.5">
+                          <div className="relative inline-flex items-start">
                             {it.isNewLaunch && (
-                              <span className="text-[10px] bg-slate-100 text-slate-900 font-semibold px-2 py-0.5 rounded-full">
-                                NEW
-                              </span>
+                              <sup className="text-[9.5px] font-bold text-[#F37021] select-none leading-none mr-1 -top-0.5 relative tracking-tight shrink-0">
+                                {t.tagNewLaunch}
+                              </sup>
                             )}
                             <span>{it.name}</span>
                           </div>

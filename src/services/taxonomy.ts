@@ -234,7 +234,7 @@ export function generateKeyFindings(
   const belowPlatforms = platformRatings.filter(p => p.rating < threshold);
   if (belowPlatforms.length === 0) {
     if (lang === 'en-US') {
-      return `${productName}: Ratings across all retail channels are maintaining above ${threshold.toFixed(1)}★. Operating normally without QA compliance alerts.`;
+      return `${productName}: Ratings across all retail channels are maintaining above ${threshold.toFixed(1)}. Operating normally without QA compliance alerts.`;
     }
     if (lang === 'zh-TW') {
       return `${productName}：各渠道平均評分均保持在 ${threshold.toFixed(1)} 分及以上，運行良好，無觸發合規預警。`;
@@ -278,11 +278,11 @@ export function generateKeyFindings(
   }
 
   if (lang === 'en-US') {
-    const platsStr = belowPlatforms.map(p => `${p.platformName} (${p.rating.toFixed(1)}★)`).join(', ');
+    const platsStr = belowPlatforms.map(p => `${p.platformName} (${p.rating.toFixed(1)})`).join(', ');
     const issuesText = phrases.length > 0
       ? `Main complaints relate to: ${phrases.join(', ')}.`
       : 'No detailed complaint text captured yet; recommend running deep scan.';
-    return `[COMPLIANCE ALERT] ${productName} is rated below ${threshold.toFixed(1)}★ on ${platsStr} (lowest ${lowest.rating.toFixed(1)}★ on ${lowest.platformName}). ${issuesText}`;
+    return `[COMPLIANCE ALERT] ${productName} is rated below ${threshold.toFixed(1)} on ${platsStr} (lowest ${lowest.rating.toFixed(1)} on ${lowest.platformName}). ${issuesText}`;
   }
 
   if (lang === 'zh-TW') {

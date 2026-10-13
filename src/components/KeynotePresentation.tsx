@@ -519,13 +519,13 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
               className={`w-full rounded-2xl md:rounded-3xl border transition-all duration-700 overflow-hidden shadow-2xl relative ${
                 isDark
                   ? 'border-white/15 bg-[#0d0d11] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]'
-                  : 'border-slate-300/80 bg-white shadow-[0_20px_50px_-10px_rgba(0,0,0,0.12)]'
+                  : 'border-slate-200/90 bg-[#f4f5f8] shadow-[0_20px_50px_-10px_rgba(0,0,0,0.08),0_1px_3px_rgba(0,0,0,0.04)]'
               }`}
             >
               {/* Studio Display Hardware Top Bezel & Window Controls */}
               <div
-                className={`h-9 px-4 flex items-center justify-between border-b ${
-                  isDark ? 'bg-zinc-950/80 border-white/10' : 'bg-slate-100/90 border-slate-200'
+                className={`h-9 px-4 flex items-center justify-between border-b transition-colors ${
+                  isDark ? 'bg-zinc-950/80 border-white/10' : 'bg-white/90 border-slate-200/80 backdrop-blur-md'
                 }`}
               >
                 {/* macOS Window Controls */}
@@ -533,20 +533,26 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                   <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
                   <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
                   <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
-                  <span className="ml-2 text-[11px] font-mono text-zinc-400 truncate max-w-[200px]">
+                  <span className={`ml-2 text-[11px] font-mono truncate max-w-[200px] ${
+                    isDark ? 'text-zinc-400' : 'text-slate-500 font-medium'
+                  }`}>
                     mga-sentinel.internal / {currentSlideData.id}
                   </span>
                 </div>
 
                 {/* Live Real-time Indicator & Magnifier toggle */}
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                  <div className={`flex items-center gap-1.5 text-[10px] font-mono ${
+                    isDark ? 'text-emerald-400' : 'text-emerald-600 font-semibold'
+                  }`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-emerald-400' : 'bg-emerald-600'} animate-ping`} />
                     <span>{ui.retinaLiveIndicator}</span>
                   </div>
                   <button
                     onClick={() => setIsZoomed(!isZoomed)}
-                    className="text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                    className={`transition-colors cursor-pointer ${
+                      isDark ? 'text-zinc-400 hover:text-white' : 'text-slate-400 hover:text-slate-800'
+                    }`}
                     title={isZoomed ? ui.zoomOutTooltip : ui.zoomInTooltip}
                   >
                     {isZoomed ? <ZoomOut className="w-3.5 h-3.5" /> : <ZoomIn className="w-3.5 h-3.5" />}
@@ -558,24 +564,32 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
               <div
                 className={`p-4 md:p-6 transition-all duration-500 overflow-hidden ${
                   isZoomed ? 'scale-105 origin-center' : 'scale-100'
-                }`}
+                } ${isDark ? 'bg-[#0d0d11]' : 'bg-[#f4f5f8]'}`}
               >
                 {/* ── Slide 0: Sentinel Mission Control ── */}
                 {currentSlide === 0 && (
                   <div className="space-y-4">
                     {/* Header Banner */}
-                    <div className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-900 text-white border border-slate-800">
+                    <div className={`flex items-center justify-between p-3.5 rounded-2xl border transition-colors ${
+                      isDark
+                        ? 'bg-slate-900 text-white border-slate-800'
+                        : 'bg-white text-slate-900 border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.04)]'
+                    }`}>
                       <div className="flex items-center gap-3">
                         <Mgalogo size="sm" />
                         <div>
-                          <h4 className="text-xs font-bold tracking-tight">
+                          <h4 className={`text-xs font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
                             {ui.mock0DeptTitle}
                           </h4>
-                          <p className="text-[10px] text-zinc-400">{ui.mock0DeptSub}</p>
+                          <p className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock0DeptSub}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="px-2.5 py-0.5 text-[10px] font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full">
+                        <span className={`px-2.5 py-0.5 text-[10px] font-mono rounded-full border ${
+                          isDark
+                            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+                            : 'bg-emerald-50 text-emerald-700 border-emerald-200 font-semibold'
+                        }`}>
                           {ui.mock0SystemOk}
                         </span>
                       </div>
@@ -583,60 +597,86 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
 
                     {/* Stats Grid */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                      <div className="p-3 rounded-2xl bg-slate-800/40 border border-slate-700/50">
-                        <span className="text-[10px] text-zinc-400 block">{ui.mock0SkuLabel}</span>
-                        <span className="text-xl font-bold font-mono text-white">{ui.mock0SkuVal}</span>
-                        <span className="text-[9px] text-zinc-500 block">{ui.mock0SkuSub}</span>
+                      <div className={`p-3 rounded-2xl border transition-colors ${
+                        isDark
+                          ? 'bg-slate-800/40 border-slate-700/50'
+                          : 'bg-white border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)]'
+                      }`}>
+                        <span className={`text-[10px] block ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock0SkuLabel}</span>
+                        <span className={`text-xl font-bold font-mono ${isDark ? 'text-white' : 'text-slate-900'}`}>{ui.mock0SkuVal}</span>
+                        <span className={`text-[9px] block ${isDark ? 'text-zinc-500' : 'text-slate-400'}`}>{ui.mock0SkuSub}</span>
                       </div>
-                      <div className="p-3 rounded-2xl bg-slate-800/40 border border-slate-700/50">
-                        <span className="text-[10px] text-zinc-400 block">{ui.mock0AvgRatingLabel}</span>
-                        <span className="text-xl font-bold font-mono text-emerald-400">4.38 ★</span>
-                        <span className="text-[9px] text-emerald-500 block">{ui.mock0AvgRatingSub}</span>
+                      <div className={`p-3 rounded-2xl border transition-colors ${
+                        isDark
+                          ? 'bg-slate-800/40 border-slate-700/50'
+                          : 'bg-white border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)]'
+                      }`}>
+                        <span className={`text-[10px] block ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock0AvgRatingLabel}</span>
+                        <span className={`text-xl font-bold font-mono ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>4.38</span>
+                        <span className={`text-[9px] block ${isDark ? 'text-emerald-500' : 'text-emerald-600'}`}>{ui.mock0AvgRatingSub}</span>
                       </div>
-                      <div className="p-3 rounded-2xl bg-rose-950/30 border border-rose-800/40">
-                        <span className="text-[10px] text-rose-300 block">{ui.mock0AlertLabel}</span>
-                        <span className="text-xl font-bold font-mono text-rose-400">
+                      <div className={`p-3 rounded-2xl border transition-colors ${
+                        isDark
+                          ? 'bg-rose-950/30 border-rose-800/40'
+                          : 'bg-rose-50/80 border-rose-200/80 shadow-[0_1px_3px_rgba(225,29,72,0.04)]'
+                      }`}>
+                        <span className={`text-[10px] block ${isDark ? 'text-rose-300' : 'text-rose-700 font-medium'}`}>{ui.mock0AlertLabel}</span>
+                        <span className={`text-xl font-bold font-mono ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>
                           {ui.mock0AlertCount.replace('{count}', String(alertCount))}
                         </span>
-                        <span className="text-[9px] text-rose-300 block">{ui.mock0AlertSub}</span>
+                        <span className={`text-[9px] block ${isDark ? 'text-rose-300' : 'text-rose-600'}`}>{ui.mock0AlertSub}</span>
                       </div>
-                      <div className="p-3 rounded-2xl bg-amber-950/30 border border-amber-800/40">
-                        <span className="text-[10px] text-amber-300 block">{ui.mock0SafetyLabel}</span>
-                        <span className="text-xl font-bold font-mono text-amber-400">
+                      <div className={`p-3 rounded-2xl border transition-colors ${
+                        isDark
+                          ? 'bg-amber-950/30 border-amber-800/40'
+                          : 'bg-amber-50/80 border-amber-200/80 shadow-[0_1px_3px_rgba(217,119,6,0.04)]'
+                      }`}>
+                        <span className={`text-[10px] block ${isDark ? 'text-amber-300' : 'text-amber-800 font-medium'}`}>{ui.mock0SafetyLabel}</span>
+                        <span className={`text-xl font-bold font-mono ${isDark ? 'text-amber-400' : 'text-amber-700'}`}>
                           {ui.mock0SafetyCount.replace('{count}', String(criticalSafetyCount))}
                         </span>
-                        <span className="text-[9px] text-amber-300 block">{ui.mock0SafetySub}</span>
+                        <span className={`text-[9px] block ${isDark ? 'text-amber-300' : 'text-amber-700'}`}>{ui.mock0SafetySub}</span>
                       </div>
                     </div>
 
                     {/* Live SKU preview cards */}
-                    <div className="p-3.5 rounded-2xl bg-slate-800/30 border border-slate-700/40 space-y-2">
-                      <div className="flex items-center justify-between text-xs text-zinc-400 font-mono">
-                        <span>{ui.mock0LiveStream}</span>
-                        <span className="text-emerald-400">{ui.mock0Channels}</span>
+                    <div className={`p-3.5 rounded-2xl border space-y-2 transition-colors ${
+                      isDark
+                        ? 'bg-slate-800/30 border-slate-700/40'
+                        : 'bg-white border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.04)]'
+                    }`}>
+                      <div className="flex items-center justify-between text-xs font-mono">
+                        <span className={isDark ? 'text-zinc-400' : 'text-slate-500'}>{ui.mock0LiveStream}</span>
+                        <span className={isDark ? 'text-emerald-400' : 'text-emerald-600 font-semibold'}>{ui.mock0Channels}</span>
                       </div>
-                      <div className="space-y-1.5">
-                        <div className="flex items-center justify-between text-xs p-2 rounded-xl bg-slate-800/50">
-                          <span className="font-semibold text-zinc-200 truncate">
+                      <div className={`divide-y transition-colors ${isDark ? 'divide-zinc-800/60' : 'divide-slate-100'}`}>
+                        <div className="flex items-center justify-between text-xs py-2 px-0.5">
+                          <span className={`font-semibold truncate ${isDark ? 'text-zinc-200' : 'text-slate-800'}`}>
                             Little Tikes Power Cuts Chainsaw 2-in-1
                           </span>
-                          <span className="font-mono text-rose-400 font-bold px-2 py-0.5 bg-rose-500/20 rounded text-[11px]">
+                          <span className={`font-mono font-bold text-[11px] tabular-nums ${
+                            isDark ? 'text-rose-400' : 'text-rose-600'
+                          }`}>
                             {ui.mock0ChainsawIssue}
                           </span>
                         </div>
-                        <div className="flex items-center justify-between text-xs p-2 rounded-xl bg-slate-800/50">
-                          <span className="font-semibold text-zinc-200 truncate">
+                        <div className="flex items-center justify-between text-xs py-2 px-0.5">
+                          <span className={`font-semibold truncate ${isDark ? 'text-zinc-200' : 'text-slate-800'}`}>
                             L.O.L. Surprise! Magic Flying Pixie
                           </span>
-                          <span className="font-mono text-amber-400 font-bold px-2 py-0.5 bg-amber-500/20 rounded text-[11px]">
+                          <span className={`font-mono font-bold text-[11px] tabular-nums ${
+                            isDark ? 'text-amber-400' : 'text-amber-600'
+                          }`}>
                             {ui.mock0PixieIssue}
                           </span>
                         </div>
-                        <div className="flex items-center justify-between text-xs p-2 rounded-xl bg-slate-800/50">
-                          <span className="font-semibold text-zinc-200 truncate">
+                        <div className="flex items-center justify-between text-xs py-2 px-0.5">
+                          <span className={`font-semibold truncate ${isDark ? 'text-zinc-200' : 'text-slate-800'}`}>
                             Rainbow High Fashion Dolls Series 5
                           </span>
-                          <span className="font-mono text-emerald-400 font-bold px-2 py-0.5 bg-emerald-500/20 rounded text-[11px]">
+                          <span className={`font-mono font-bold text-[11px] tabular-nums ${
+                            isDark ? 'text-[#2997ff]' : 'text-[#0071e3]'
+                          }`}>
                             {ui.mock0RainbowIssue}
                           </span>
                         </div>
@@ -649,63 +689,75 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                 {currentSlide === 1 && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Traditional Manual Chaos */}
-                    <div className="p-4 rounded-2xl bg-rose-950/20 border border-rose-900/40 space-y-3">
+                    <div className={`p-4 rounded-2xl border space-y-3 transition-colors ${
+                      isDark
+                        ? 'bg-rose-950/20 border-rose-900/40'
+                        : 'bg-rose-50/70 border-rose-200/90 shadow-[0_1px_3px_rgba(225,29,72,0.04)]'
+                    }`}>
                       <div className="flex items-center gap-2">
-                        <AlertTriangle className="w-4 h-4 text-rose-400" />
-                        <span className="text-xs font-bold text-rose-300">{ui.mock1ChaosTitle}</span>
+                        <AlertTriangle className={`w-4 h-4 ${isDark ? 'text-rose-400' : 'text-rose-600'}`} />
+                        <span className={`text-xs font-bold ${isDark ? 'text-rose-300' : 'text-rose-800'}`}>{ui.mock1ChaosTitle}</span>
                       </div>
-                      <ul className="space-y-2 text-xs text-zinc-400">
+                      <ul className={`space-y-2 text-xs ${isDark ? 'text-zinc-400' : 'text-slate-700'}`}>
                         <li className="flex items-start gap-1.5">
-                          <span className="text-rose-400 font-mono">✕</span>
+                          <span className={`font-mono font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>✕</span>
                           <span>
                             <strong>{ui.mock1ChaosItem1Title}</strong> {ui.mock1ChaosItem1Desc}
                           </span>
                         </li>
                         <li className="flex items-start gap-1.5">
-                          <span className="text-rose-400 font-mono">✕</span>
+                          <span className={`font-mono font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>✕</span>
                           <span>
                             <strong>{ui.mock1ChaosItem2Title}</strong> {ui.mock1ChaosItem2Desc}
                           </span>
                         </li>
                         <li className="flex items-start gap-1.5">
-                          <span className="text-rose-400 font-mono">✕</span>
+                          <span className={`font-mono font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>✕</span>
                           <span>
                             <strong>{ui.mock1ChaosItem3Title}</strong> {ui.mock1ChaosItem3Desc}
                           </span>
                         </li>
                       </ul>
-                      <div className="pt-2 text-center p-2 rounded-xl bg-rose-900/20 text-rose-300 font-mono text-[11px]">
+                      <div className={`pt-2 text-center p-2 rounded-xl font-mono text-[11px] ${
+                        isDark ? 'bg-rose-900/20 text-rose-300' : 'bg-rose-100/80 text-rose-800 border border-rose-200/60'
+                      }`}>
                         {ui.mock1ChaosFooter}
                       </div>
                     </div>
 
                     {/* Sentinel Solution */}
-                    <div className="p-4 rounded-2xl bg-emerald-950/20 border border-emerald-900/40 space-y-3">
+                    <div className={`p-4 rounded-2xl border space-y-3 transition-colors ${
+                      isDark
+                        ? 'bg-emerald-950/20 border-emerald-900/40'
+                        : 'bg-emerald-50/70 border-emerald-200/90 shadow-[0_1px_3px_rgba(16,185,129,0.04)]'
+                    }`}>
                       <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                        <span className="text-xs font-bold text-emerald-300">{ui.mock1SentinelTitle}</span>
+                        <CheckCircle2 className={`w-4 h-4 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`} />
+                        <span className={`text-xs font-bold ${isDark ? 'text-emerald-300' : 'text-emerald-900'}`}>{ui.mock1SentinelTitle}</span>
                       </div>
-                      <ul className="space-y-2 text-xs text-zinc-400">
+                      <ul className={`space-y-2 text-xs ${isDark ? 'text-zinc-400' : 'text-slate-700'}`}>
                         <li className="flex items-start gap-1.5">
-                          <span className="text-emerald-400 font-mono">✓</span>
+                          <span className={`font-mono font-bold ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>✓</span>
                           <span>
                             <strong>{ui.mock1SentinelItem1Title}</strong> {ui.mock1SentinelItem1Desc}
                           </span>
                         </li>
                         <li className="flex items-start gap-1.5">
-                          <span className="text-emerald-400 font-mono">✓</span>
+                          <span className={`font-mono font-bold ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>✓</span>
                           <span>
                             <strong>{ui.mock1SentinelItem2Title}</strong> {ui.mock1SentinelItem2Desc}
                           </span>
                         </li>
                         <li className="flex items-start gap-1.5">
-                          <span className="text-emerald-400 font-mono">✓</span>
+                          <span className={`font-mono font-bold ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>✓</span>
                           <span>
                             <strong>{ui.mock1SentinelItem3Title}</strong> {ui.mock1SentinelItem3Desc}
                           </span>
                         </li>
                       </ul>
-                      <div className="pt-2 text-center p-2 rounded-xl bg-emerald-900/20 text-emerald-300 font-mono text-[11px]">
+                      <div className={`pt-2 text-center p-2 rounded-xl font-mono text-[11px] ${
+                        isDark ? 'bg-emerald-900/20 text-emerald-300' : 'bg-emerald-100/80 text-emerald-800 border border-emerald-200/60'
+                      }`}>
                         {ui.mock1SentinelFooter}
                       </div>
                     </div>
@@ -714,13 +766,23 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
 
                 {/* ── Slide 2: Omni-Channel Matrix High-Res UI ── */}
                 {currentSlide === 2 && (
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between pb-2 border-b border-zinc-700/50">
+                  <div className={`space-y-3 p-3.5 rounded-2xl border transition-colors ${
+                    isDark
+                      ? 'bg-zinc-900/40 border-zinc-800'
+                      : 'bg-white border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.04)]'
+                  }`}>
+                    <div className={`flex items-center justify-between pb-2 border-b ${
+                      isDark ? 'border-zinc-700/50' : 'border-slate-200/80'
+                    }`}>
                       <div>
-                        <span className="text-xs font-bold text-zinc-200">{ui.mock2MatrixTitle}</span>
-                        <p className="text-[10px] text-zinc-400">{ui.mock2MatrixSub}</p>
+                        <span className={`text-xs font-bold ${isDark ? 'text-zinc-200' : 'text-slate-900'}`}>{ui.mock2MatrixTitle}</span>
+                        <p className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock2MatrixSub}</p>
                       </div>
-                      <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 bg-emerald-500/10 rounded">
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+                        isDark
+                          ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20'
+                          : 'text-emerald-700 bg-emerald-50 border-emerald-200 font-semibold'
+                      }`}>
                         {ui.mock2UpcAligned}
                       </span>
                     </div>
@@ -729,50 +791,52 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                     <div className="overflow-x-auto">
                       <table className="w-full text-[11px] text-left">
                         <thead>
-                          <tr className="border-b border-zinc-800 text-zinc-400 font-mono text-[10px]">
-                            <th className="py-1.5 px-2">{ui.mock2ThProduct}</th>
-                            <th className="py-1.5 px-2">Amazon US</th>
-                            <th className="py-1.5 px-2">Walmart US</th>
-                            <th className="py-1.5 px-2">Target</th>
-                            <th className="py-1.5 px-2">{ui.mock2ThStatus}</th>
+                          <tr className={`border-b font-mono text-[10px] ${
+                            isDark ? 'border-zinc-800 text-zinc-400' : 'border-slate-200 text-slate-500 bg-slate-50/70'
+                          }`}>
+                            <th className="py-1.5 px-2 font-semibold">{ui.mock2ThProduct}</th>
+                            <th className="py-1.5 px-2 font-semibold">Amazon US</th>
+                            <th className="py-1.5 px-2 font-semibold">Walmart US</th>
+                            <th className="py-1.5 px-2 font-semibold">Target</th>
+                            <th className="py-1.5 px-2 font-semibold">{ui.mock2ThStatus}</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-zinc-800/60 font-mono">
-                          <tr className="bg-rose-950/20">
-                            <td className="py-2 px-2 font-sans font-medium text-zinc-200">
+                        <tbody className={`divide-y font-mono ${isDark ? 'divide-zinc-800/60' : 'divide-slate-100'}`}>
+                          <tr className={isDark ? 'bg-rose-950/20' : 'bg-rose-50/50'}>
+                            <td className={`py-2 px-2 font-sans font-medium ${isDark ? 'text-zinc-200' : 'text-slate-900'}`}>
                               Little Tikes Chainsaw 2-in-1
                             </td>
-                            <td className="py-2 px-2 text-rose-400 font-bold">2.7 ★ (120)</td>
-                            <td className="py-2 px-2 text-rose-400 font-bold">2.9 ★ (84)</td>
-                            <td className="py-2 px-2 text-amber-400">3.1 ★ (42)</td>
-                            <td className="py-2 px-2 text-rose-400 font-sans text-[10px]">{ui.mock2StatusAlert}</td>
+                            <td className={`py-2 px-2 font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>2.7 (120)</td>
+                            <td className={`py-2 px-2 font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>2.9 (84)</td>
+                            <td className={`py-2 px-2 ${isDark ? 'text-amber-400' : 'text-amber-700 font-medium'}`}>3.1 (42)</td>
+                            <td className={`py-2 px-2 font-sans text-[10px] font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>{ui.mock2StatusAlert}</td>
                           </tr>
-                          <tr className="bg-amber-950/20">
-                            <td className="py-2 px-2 font-sans font-medium text-zinc-200">
+                          <tr className={isDark ? 'bg-amber-950/20' : 'bg-amber-50/50'}>
+                            <td className={`py-2 px-2 font-sans font-medium ${isDark ? 'text-zinc-200' : 'text-slate-900'}`}>
                               L.O.L. Surprise! Flying Pixie
                             </td>
-                            <td className="py-2 px-2 text-rose-400 font-bold">2.8 ★ (95)</td>
-                            <td className="py-2 px-2 text-amber-400">3.2 ★ (61)</td>
-                            <td className="py-2 px-2 text-emerald-400">3.6 ★ (38)</td>
-                            <td className="py-2 px-2 text-amber-400 font-sans text-[10px]">{ui.mock2StatusWatch}</td>
+                            <td className={`py-2 px-2 font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>2.8 (95)</td>
+                            <td className={`py-2 px-2 ${isDark ? 'text-amber-400 font-medium' : 'text-amber-700 font-medium'}`}>3.2 (61)</td>
+                            <td className={`py-2 px-2 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>3.6 (38)</td>
+                            <td className={`py-2 px-2 font-sans text-[10px] font-bold ${isDark ? 'text-amber-400' : 'text-amber-700'}`}>{ui.mock2StatusWatch}</td>
                           </tr>
-                          <tr>
-                            <td className="py-2 px-2 font-sans font-medium text-zinc-200">
+                          <tr className={isDark ? '' : 'hover:bg-slate-50/80'}>
+                            <td className={`py-2 px-2 font-sans font-medium ${isDark ? 'text-zinc-200' : 'text-slate-800'}`}>
                               Rainbow High Fashion Dolls
                             </td>
-                            <td className="py-2 px-2 text-emerald-400 font-bold">4.8 ★ (320)</td>
-                            <td className="py-2 px-2 text-emerald-400 font-bold">4.6 ★ (210)</td>
-                            <td className="py-2 px-2 text-emerald-400">4.7 ★ (155)</td>
-                            <td className="py-2 px-2 text-emerald-400 font-sans text-[10px]">{ui.mock2StatusPass}</td>
+                            <td className={`py-2 px-2 font-bold ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>4.8 (320)</td>
+                            <td className={`py-2 px-2 font-bold ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>4.6 (210)</td>
+                            <td className={`py-2 px-2 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>4.7 (155)</td>
+                            <td className={`py-2 px-2 font-sans text-[10px] font-bold ${isDark ? 'text-[#2997ff]' : 'text-[#0071E3]'}`}>{ui.mock2StatusPass}</td>
                           </tr>
-                          <tr>
-                            <td className="py-2 px-2 font-sans font-medium text-zinc-200">
+                          <tr className={isDark ? '' : 'hover:bg-slate-50/80'}>
+                            <td className={`py-2 px-2 font-sans font-medium ${isDark ? 'text-zinc-200' : 'text-slate-800'}`}>
                               Bratz 20th Anniversary
                             </td>
-                            <td className="py-2 px-2 text-emerald-400">4.5 ★ (180)</td>
-                            <td className="py-2 px-2 text-emerald-400">4.4 ★ (130)</td>
-                            <td className="py-2 px-2 text-emerald-400">4.5 ★ (92)</td>
-                            <td className="py-2 px-2 text-emerald-400 font-sans text-[10px]">{ui.mock2StatusPass}</td>
+                            <td className={`py-2 px-2 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>4.5 (180)</td>
+                            <td className={`py-2 px-2 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>4.4 (130)</td>
+                            <td className={`py-2 px-2 ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>4.5 (92)</td>
+                            <td className={`py-2 px-2 font-sans text-[10px] font-bold ${isDark ? 'text-[#2997ff]' : 'text-[#0071E3]'}`}>{ui.mock2StatusPass}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -784,16 +848,26 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                 {currentSlide === 3 && (
                   <div className="space-y-4">
                     {/* The Threshold Controller slider representation */}
-                    <div className="p-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-700/60 space-y-2">
+                    <div className={`p-3.5 rounded-2xl border space-y-2 transition-colors ${
+                      isDark
+                        ? 'bg-zinc-900/80 border-zinc-700/60'
+                        : 'bg-white border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.04)]'
+                    }`}>
                       <div className="flex items-center justify-between text-xs">
-                        <span className="font-bold text-zinc-200">{ui.mock3SliderTitle}</span>
-                        <span className="font-mono text-emerald-400 font-bold px-2 py-0.5 bg-emerald-500/10 rounded">
+                        <span className={`font-bold ${isDark ? 'text-zinc-200' : 'text-slate-900'}`}>{ui.mock3SliderTitle}</span>
+                        <span className={`font-mono font-bold px-2 py-0.5 rounded border ${
+                          isDark
+                            ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20'
+                            : 'text-emerald-700 bg-emerald-50 border-emerald-200 font-semibold'
+                        }`}>
                           {ui.mock3CurrentBaseline.replace('{threshold}', threshold.toFixed(1))}
                         </span>
                       </div>
                       {/* Realistic slider bar */}
                       <div className="relative flex items-center h-4">
-                        <div className="w-full h-2 rounded-full bg-zinc-700 relative overflow-hidden">
+                        <div className={`w-full h-2 rounded-full relative overflow-hidden ${
+                          isDark ? 'bg-zinc-700' : 'bg-slate-200'
+                        }`}>
                           <div
                             className="h-full bg-rose-500 transition-all duration-300"
                             style={{ width: `${((threshold - 2.0) / 2.5) * 100}%` }}
@@ -804,33 +878,49 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                           style={{ left: `calc(${((threshold - 2.0) / 2.5) * 100}% - 10px)` }}
                         />
                       </div>
-                      <div className="flex justify-between text-[10px] font-mono text-zinc-400">
+                      <div className={`flex justify-between text-[10px] font-mono ${
+                        isDark ? 'text-zinc-400' : 'text-slate-500'
+                      }`}>
                         <span>{ui.mock3Relaxed}</span>
-                        <span className="text-rose-400 font-bold">{ui.mock3Redline}</span>
+                        <span className="text-rose-500 font-bold">{ui.mock3Redline}</span>
                         <span>{ui.mock3Strict}</span>
                       </div>
                     </div>
 
                     {/* Low-rating SKUs alert list */}
-                    <div className="p-3.5 rounded-2xl bg-rose-950/20 border border-rose-900/50 space-y-2">
-                      <div className="flex items-center justify-between text-xs text-rose-300 font-bold">
+                    <div className={`p-3.5 rounded-2xl border space-y-2 transition-colors ${
+                      isDark
+                        ? 'bg-rose-950/20 border-rose-900/50'
+                        : 'bg-rose-50/70 border-rose-200/90 shadow-[0_1px_3px_rgba(225,29,72,0.04)]'
+                    }`}>
+                      <div className={`flex items-center justify-between text-xs font-bold ${
+                        isDark ? 'text-rose-300' : 'text-rose-800'
+                      }`}>
                         <span>{ui.mock3AlertHeader.replace('{count}', String(alertCount))}</span>
-                        <span className="text-[10px] font-mono font-normal">{ui.mock3AlertSub}</span>
+                        <span className={`text-[10px] font-mono font-normal ${isDark ? 'text-rose-400/80' : 'text-rose-600'}`}>{ui.mock3AlertSub}</span>
                       </div>
                       <div className="space-y-1.5">
-                        <div className="p-2 rounded-xl bg-zinc-900/70 border border-rose-900/40 flex items-center justify-between text-xs">
+                        <div className={`p-2 rounded-xl border flex items-center justify-between text-xs transition-colors ${
+                          isDark
+                            ? 'bg-zinc-900/70 border-rose-900/40 text-white'
+                            : 'bg-white border-rose-200/70 text-slate-900 shadow-sm'
+                        }`}>
                           <div>
-                            <span className="font-bold text-white block">Little Tikes Chainsaw 2-in-1 (WMUS)</span>
-                            <span className="text-[10px] text-zinc-400">{ui.mock3ChainsawIssue}</span>
+                            <span className={`font-bold block ${isDark ? 'text-white' : 'text-slate-900'}`}>Little Tikes Chainsaw 2-in-1 (WMUS)</span>
+                            <span className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock3ChainsawIssue}</span>
                           </div>
-                          <span className="text-base font-mono font-bold text-rose-400">2.7 ★</span>
+                          <span className={`text-base font-mono font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>2.7</span>
                         </div>
-                        <div className="p-2 rounded-xl bg-zinc-900/70 border border-rose-900/40 flex items-center justify-between text-xs">
+                        <div className={`p-2 rounded-xl border flex items-center justify-between text-xs transition-colors ${
+                          isDark
+                            ? 'bg-zinc-900/70 border-rose-900/40 text-white'
+                            : 'bg-white border-rose-200/70 text-slate-900 shadow-sm'
+                        }`}>
                           <div>
-                            <span className="font-bold text-white block">L.O.L. Flying Pixie (AMZUS)</span>
-                            <span className="text-[10px] text-zinc-400">{ui.mock3PixieIssue}</span>
+                            <span className={`font-bold block ${isDark ? 'text-white' : 'text-slate-900'}`}>L.O.L. Flying Pixie (AMZUS)</span>
+                            <span className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock3PixieIssue}</span>
                           </div>
-                          <span className="text-base font-mono font-bold text-rose-400">2.8 ★</span>
+                          <span className={`text-base font-mono font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>2.8</span>
                         </div>
                       </div>
                     </div>
@@ -839,13 +929,23 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
 
                 {/* ── Slide 4: Deep VOC Attribution High-Res UI ── */}
                 {currentSlide === 4 && (
-                  <div className="space-y-3.5">
-                    <div className="flex items-center justify-between pb-2 border-b border-zinc-700/50">
+                  <div className={`space-y-3.5 p-3.5 rounded-2xl border transition-colors ${
+                    isDark
+                      ? 'bg-zinc-900/40 border-zinc-800'
+                      : 'bg-white border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.04)]'
+                  }`}>
+                    <div className={`flex items-center justify-between pb-2 border-b ${
+                      isDark ? 'border-zinc-700/50' : 'border-slate-200/80'
+                    }`}>
                       <div>
-                        <span className="text-xs font-bold text-zinc-200">{ui.mock4VocTitle}</span>
-                        <p className="text-[10px] text-zinc-400">{ui.mock4VocSub}</p>
+                        <span className={`text-xs font-bold ${isDark ? 'text-zinc-200' : 'text-slate-900'}`}>{ui.mock4VocTitle}</span>
+                        <p className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock4VocSub}</p>
                       </div>
-                      <span className="text-[10px] font-mono text-purple-400 px-2 py-0.5 bg-purple-500/10 rounded">
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+                        isDark
+                          ? 'text-purple-400 bg-purple-500/10 border-purple-500/20'
+                          : 'text-purple-700 bg-purple-50 border-purple-200 font-semibold'
+                      }`}>
                         {ui.mock4NlpBadge}
                       </span>
                     </div>
@@ -854,52 +954,70 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                     <div className="space-y-2">
                       <div>
                         <div className="flex justify-between text-[11px] mb-1">
-                          <span className="font-medium text-zinc-300">{ui.mock4DamageCat}</span>
-                          <span className="font-mono font-bold text-rose-400">42% (52)</span>
+                          <span className={`font-medium ${isDark ? 'text-zinc-300' : 'text-slate-700'}`}>{ui.mock4DamageCat}</span>
+                          <span className={`font-mono font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>42% (52)</span>
                         </div>
-                        <div className="w-full h-2 rounded-full bg-zinc-800 overflow-hidden">
+                        <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-zinc-800' : 'bg-slate-200'}`}>
                           <div className="h-full bg-rose-500 rounded-full" style={{ width: '42%' }} />
                         </div>
                       </div>
 
                       <div>
                         <div className="flex justify-between text-[11px] mb-1">
-                          <span className="font-medium text-zinc-300">{ui.mock4FuncCat}</span>
-                          <span className="font-mono font-bold text-amber-400">28% (35)</span>
+                          <span className={`font-medium ${isDark ? 'text-zinc-300' : 'text-slate-700'}`}>{ui.mock4FuncCat}</span>
+                          <span className={`font-mono font-bold ${isDark ? 'text-amber-400' : 'text-amber-600'}`}>28% (35)</span>
                         </div>
-                        <div className="w-full h-2 rounded-full bg-zinc-800 overflow-hidden">
+                        <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-zinc-800' : 'bg-slate-200'}`}>
                           <div className="h-full bg-amber-500 rounded-full" style={{ width: '28%' }} />
                         </div>
                       </div>
 
                       <div>
                         <div className="flex justify-between text-[11px] mb-1">
-                          <span className="font-medium text-zinc-300">{ui.mock4PkgCat}</span>
-                          <span className="font-mono font-bold text-cyan-400">18% (22)</span>
+                          <span className={`font-medium ${isDark ? 'text-zinc-300' : 'text-slate-700'}`}>{ui.mock4PkgCat}</span>
+                          <span className={`font-mono font-bold ${isDark ? 'text-cyan-400' : 'text-blue-600'}`}>18% (22)</span>
                         </div>
-                        <div className="w-full h-2 rounded-full bg-zinc-800 overflow-hidden">
+                        <div className={`w-full h-2 rounded-full overflow-hidden ${isDark ? 'bg-zinc-800' : 'bg-slate-200'}`}>
                           <div className="h-full bg-cyan-500 rounded-full" style={{ width: '18%' }} />
                         </div>
                       </div>
                     </div>
 
                     {/* Real Review Evidence Quote */}
-                    <div className="p-3 rounded-2xl bg-zinc-900/90 border border-zinc-800 space-y-1.5 text-xs">
-                      <div className="flex items-center justify-between text-[10px] text-zinc-400 font-mono">
+                    <div className={`p-3 rounded-2xl border space-y-1.5 text-xs transition-colors ${
+                      isDark
+                        ? 'bg-zinc-900/90 border-zinc-800 text-zinc-200'
+                        : 'bg-slate-50 border-slate-200/90 text-slate-800'
+                    }`}>
+                      <div className={`flex items-center justify-between text-[10px] font-mono ${
+                        isDark ? 'text-zinc-400' : 'text-slate-500'
+                      }`}>
                         <span>{ui.mock4ReviewTag}</span>
-                        <span className="text-rose-400 font-bold">{ui.mock4ReviewStars}</span>
+                        <span className={`font-bold ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>{ui.mock4ReviewStars}</span>
                       </div>
-                      <p className="text-zinc-200 italic leading-snug">
+                      <p className={`italic leading-snug ${isDark ? 'text-zinc-200' : 'text-slate-800'}`}>
                         {ui.mock4Quote}
                       </p>
                       <div className="flex gap-1.5 pt-1">
-                        <span className="px-1.5 py-0.5 text-[9px] bg-rose-500/20 text-rose-300 rounded font-mono">
+                        <span className={`px-1.5 py-0.5 text-[9px] rounded font-mono border ${
+                          isDark
+                            ? 'bg-rose-500/20 text-rose-300 border-rose-500/30'
+                            : 'bg-rose-100 text-rose-700 border-rose-200/60'
+                        }`}>
                           {ui.mock4TagBattery}
                         </span>
-                        <span className="px-1.5 py-0.5 text-[9px] bg-amber-500/20 text-amber-300 rounded font-mono">
+                        <span className={`px-1.5 py-0.5 text-[9px] rounded font-mono border ${
+                          isDark
+                            ? 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+                            : 'bg-amber-100 text-amber-800 border-amber-200/60'
+                        }`}>
                           {ui.mock4TagMotor}
                         </span>
-                        <span className="px-1.5 py-0.5 text-[9px] bg-cyan-500/20 text-cyan-300 rounded font-mono">
+                        <span className={`px-1.5 py-0.5 text-[9px] rounded font-mono border ${
+                          isDark
+                            ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30'
+                            : 'bg-cyan-100 text-cyan-800 border-cyan-200/60'
+                        }`}>
                           {ui.mock4TagSafety}
                         </span>
                       </div>
@@ -909,55 +1027,79 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
 
                 {/* ── Slide 5: Autonomous Schedule Patrol High-Res UI ── */}
                 {currentSlide === 5 && (
-                  <div className="space-y-3.5">
-                    <div className="flex items-center justify-between pb-2 border-b border-zinc-700/50">
+                  <div className={`space-y-3.5 p-3.5 rounded-2xl border transition-colors ${
+                    isDark
+                      ? 'bg-zinc-900/40 border-zinc-800'
+                      : 'bg-white border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.04)]'
+                  }`}>
+                    <div className={`flex items-center justify-between pb-2 border-b ${
+                      isDark ? 'border-zinc-700/50' : 'border-slate-200/80'
+                    }`}>
                       <div>
-                        <span className="text-xs font-bold text-zinc-200">{ui.mock5PatrolTitle}</span>
-                        <p className="text-[10px] text-zinc-400">{ui.mock5PatrolSub}</p>
+                        <span className={`text-xs font-bold ${isDark ? 'text-zinc-200' : 'text-slate-900'}`}>{ui.mock5PatrolTitle}</span>
+                        <p className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock5PatrolSub}</p>
                       </div>
-                      <span className="text-[10px] font-mono text-emerald-400 px-2 py-0.5 bg-emerald-500/10 rounded">
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+                        isDark
+                          ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20'
+                          : 'text-emerald-700 bg-emerald-50 border-emerald-200 font-semibold'
+                      }`}>
                         {ui.mock5EngineActive}
                       </span>
                     </div>
 
                     {/* Schedule policy status bar */}
                     <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                      <div className="p-2 rounded-xl bg-zinc-900/80 border border-zinc-800">
-                        <span className="text-[10px] text-zinc-400 block">{ui.mock5FreqLabel}</span>
-                        <span className="font-bold text-white font-mono">
+                      <div className={`p-2 rounded-xl border transition-colors ${
+                        isDark ? 'bg-zinc-900/80 border-zinc-800' : 'bg-slate-50 border-slate-200/80'
+                      }`}>
+                        <span className={`text-[10px] block ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock5FreqLabel}</span>
+                        <span className={`font-bold font-mono ${isDark ? 'text-white' : 'text-slate-900'}`}>
                           {ui.mock5FreqVal.replace('{hours}', String(schedule.intervalMinutes / 60))}
                         </span>
                       </div>
-                      <div className="p-2 rounded-xl bg-zinc-900/80 border border-zinc-800">
-                        <span className="text-[10px] text-zinc-400 block">{ui.mock5LastRunLabel}</span>
-                        <span className="font-bold text-emerald-400 font-mono">{ui.mock5LastRunVal}</span>
+                      <div className={`p-2 rounded-xl border transition-colors ${
+                        isDark ? 'bg-zinc-900/80 border-zinc-800' : 'bg-slate-50 border-slate-200/80'
+                      }`}>
+                        <span className={`text-[10px] block ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock5LastRunLabel}</span>
+                        <span className={`font-bold font-mono ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>{ui.mock5LastRunVal}</span>
                       </div>
-                      <div className="p-2 rounded-xl bg-zinc-900/80 border border-zinc-800">
-                        <span className="text-[10px] text-zinc-400 block">{ui.mock5NextRunLabel}</span>
-                        <span className="font-bold text-cyan-400 font-mono">{ui.mock5NextRunVal}</span>
+                      <div className={`p-2 rounded-xl border transition-colors ${
+                        isDark ? 'bg-zinc-900/80 border-zinc-800' : 'bg-slate-50 border-slate-200/80'
+                      }`}>
+                        <span className={`text-[10px] block ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock5NextRunLabel}</span>
+                        <span className={`font-bold font-mono ${isDark ? 'text-cyan-400' : 'text-blue-600'}`}>{ui.mock5NextRunVal}</span>
                       </div>
                     </div>
 
                     {/* Historical logs table */}
                     <div className="space-y-1.5">
-                      <span className="text-[10px] font-mono text-zinc-400 uppercase">
+                      <span className={`text-[10px] font-mono uppercase ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>
                         {ui.mock5AuditLogsTitle}
                       </span>
                       {logs.slice(0, 2).map((lg) => (
                         <div
                           key={lg.id}
-                          className="p-2 rounded-xl bg-zinc-900/70 border border-zinc-800 flex items-center justify-between text-xs"
+                          className={`p-2 rounded-xl border flex items-center justify-between text-xs transition-colors ${
+                            isDark
+                              ? 'bg-zinc-900/70 border-zinc-800'
+                              : 'bg-slate-50 border-slate-200/80 text-slate-800'
+                          }`}
                         >
                           <div>
                             <div className="flex items-center gap-2">
-                              <span className="font-mono text-emerald-400 font-bold">{lg.id}</span>
-                              <span className="text-[10px] text-zinc-400">{lg.runAt.replace('T', ' ').slice(0, 16)}</span>
+                              <span className={`font-mono font-bold ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>{lg.id}</span>
+                              <span className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{lg.runAt.replace('T', ' ').slice(0, 16)}</span>
                             </div>
-                            <p className="text-[10px] text-zinc-300 truncate max-w-[280px]">
+                            <p className={`text-[10px] truncate max-w-[280px] ${isDark ? 'text-zinc-300' : 'text-slate-600'}`}>
                               {lg.summaryMessage}
                             </p>
                           </div>
-                          <span className="text-[10px] font-mono px-2 py-0.5 bg-rose-500/20 text-rose-300 rounded shrink-0">
+                          <span className={`text-[10px] font-mono px-2 py-0.5 rounded shrink-0 border ${
+                            isDark
+                              ? 'bg-rose-500/20 text-rose-300 border-rose-500/30'
+                              : 'bg-rose-100 text-rose-700 border-rose-200/60 font-medium'
+                          }`}>
                             {ui.mock5AlertsFound.replace('{count}', String(lg.lowRatingAlertsCount))}
                           </span>
                         </div>
@@ -970,42 +1112,60 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                 {currentSlide === 6 && (
                   <div className="space-y-4">
                     {/* Excel Structure Showcase */}
-                    <div className="p-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2">
+                    <div className={`p-3.5 rounded-2xl border space-y-2 transition-colors ${
+                      isDark
+                        ? 'bg-zinc-900/80 border-zinc-800'
+                        : 'bg-white border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.04)]'
+                    }`}>
                       <div className="flex items-center justify-between text-xs">
-                        <span className="font-bold text-zinc-200">{ui.mock6ExcelTitle}</span>
-                        <span className="font-mono text-emerald-400 text-[10px]">{ui.mock6ExcelBadge}</span>
+                        <span className={`font-bold ${isDark ? 'text-zinc-200' : 'text-slate-900'}`}>{ui.mock6ExcelTitle}</span>
+                        <span className={`font-mono text-[10px] font-bold ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>{ui.mock6ExcelBadge}</span>
                       </div>
                       <div className="grid grid-cols-2 gap-2 text-xs">
-                        <div className="p-2 rounded-xl bg-zinc-950/60 border border-zinc-800">
-                          <span className="text-emerald-400 font-bold block">{ui.mock6Sheet1Title}</span>
-                          <span className="text-[10px] text-zinc-400">{ui.mock6Sheet1Desc}</span>
+                        <div className={`p-2 rounded-xl border transition-colors ${
+                          isDark ? 'bg-zinc-950/60 border-zinc-800' : 'bg-slate-50 border-slate-200/80 hover:bg-slate-100/60'
+                        }`}>
+                          <span className={`font-bold block ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>{ui.mock6Sheet1Title}</span>
+                          <span className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock6Sheet1Desc}</span>
                         </div>
-                        <div className="p-2 rounded-xl bg-zinc-950/60 border border-zinc-800">
-                          <span className="text-emerald-400 font-bold block">{ui.mock6Sheet2Title}</span>
-                          <span className="text-[10px] text-zinc-400">{ui.mock6Sheet2Desc}</span>
+                        <div className={`p-2 rounded-xl border transition-colors ${
+                          isDark ? 'bg-zinc-950/60 border-zinc-800' : 'bg-slate-50 border-slate-200/80 hover:bg-slate-100/60'
+                        }`}>
+                          <span className={`font-bold block ${isDark ? 'text-emerald-400' : 'text-emerald-600'}`}>{ui.mock6Sheet2Title}</span>
+                          <span className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock6Sheet2Desc}</span>
                         </div>
-                        <div className="p-2 rounded-xl bg-zinc-950/60 border border-zinc-800">
-                          <span className="text-rose-400 font-bold block">{ui.mock6Sheet3Title}</span>
-                          <span className="text-[10px] text-zinc-400">{ui.mock6Sheet3Desc}</span>
+                        <div className={`p-2 rounded-xl border transition-colors ${
+                          isDark ? 'bg-zinc-950/60 border-zinc-800' : 'bg-slate-50 border-slate-200/80 hover:bg-slate-100/60'
+                        }`}>
+                          <span className={`font-bold block ${isDark ? 'text-rose-400' : 'text-rose-600'}`}>{ui.mock6Sheet3Title}</span>
+                          <span className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock6Sheet3Desc}</span>
                         </div>
-                        <div className="p-2 rounded-xl bg-zinc-950/60 border border-zinc-800">
-                          <span className="text-cyan-400 font-bold block">{ui.mock6Sheet4Title}</span>
-                          <span className="text-[10px] text-zinc-400">{ui.mock6Sheet4Desc}</span>
+                        <div className={`p-2 rounded-xl border transition-colors ${
+                          isDark ? 'bg-zinc-950/60 border-zinc-800' : 'bg-slate-50 border-slate-200/80 hover:bg-slate-100/60'
+                        }`}>
+                          <span className={`font-bold block ${isDark ? 'text-cyan-400' : 'text-blue-600'}`}>{ui.mock6Sheet4Title}</span>
+                          <span className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-500'}`}>{ui.mock6Sheet4Desc}</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Zero-Config Drag & Drop Deploy Box */}
-                    <div className="p-3.5 rounded-2xl bg-emerald-950/20 border border-emerald-900/50 flex items-center justify-between">
+                    <div className={`p-3.5 rounded-2xl border flex items-center justify-between transition-colors ${
+                      isDark
+                        ? 'bg-emerald-950/20 border-emerald-900/50'
+                        : 'bg-emerald-50/80 border-emerald-200/90 shadow-[0_1px_3px_rgba(16,185,129,0.04)]'
+                    }`}>
                       <div className="space-y-1">
-                        <span className="text-xs font-bold text-emerald-300 block">
+                        <span className={`text-xs font-bold block ${isDark ? 'text-emerald-300' : 'text-emerald-900'}`}>
                           {ui.mock6DeployTitle}
                         </span>
-                        <p className="text-[10px] text-zinc-400">
+                        <p className={`text-[10px] ${isDark ? 'text-zinc-400' : 'text-slate-600'}`}>
                           {ui.mock6DeployDesc}
                         </p>
                       </div>
-                      <span className="px-3 py-1.5 text-xs font-bold bg-emerald-500 text-slate-950 rounded-full font-mono shrink-0">
+                      <span className={`px-3 py-1.5 text-xs font-bold rounded-full font-mono shrink-0 shadow-sm ${
+                        isDark ? 'bg-emerald-500 text-slate-950' : 'bg-emerald-600 text-white'
+                      }`}>
                         {ui.mock6DeployBadge}
                       </span>
                     </div>
@@ -1015,15 +1175,21 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                 {/* ── Slide 7: Epilogue & Launch Call to Action ── */}
                 {currentSlide === 7 && (
                   <div className="p-6 text-center space-y-6">
-                    <div className="inline-block p-4 rounded-3xl bg-zinc-900 border border-zinc-700/60 shadow-xl">
+                    <div className={`inline-block p-4 rounded-3xl border shadow-xl transition-colors ${
+                      isDark ? 'bg-zinc-900 border-zinc-700/60' : 'bg-white border-slate-200/90'
+                    }`}>
                       <Mgalogo size="lg" />
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="text-xl font-extrabold text-white tracking-tight">
+                      <h3 className={`text-xl font-extrabold tracking-tight ${
+                        isDark ? 'text-white' : 'text-slate-900'
+                      }`}>
                         {ui.mock7EpilogueTitle}
                       </h3>
-                      <p className="text-xs text-zinc-400 max-w-md mx-auto leading-relaxed">
+                      <p className={`text-xs max-w-md mx-auto leading-relaxed ${
+                        isDark ? 'text-zinc-400' : 'text-slate-600'
+                      }`}>
                         {ui.mock7EpilogueDesc}
                       </p>
                     </div>
@@ -1031,14 +1197,22 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                       <button
                         onClick={onClose}
-                        className="px-6 py-2.5 rounded-full text-xs font-bold bg-white text-slate-950 hover:bg-zinc-200 transition-all cursor-pointer shadow-lg flex items-center gap-2"
+                        className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer shadow-lg flex items-center gap-2 ${
+                          isDark
+                            ? 'bg-white text-slate-950 hover:bg-zinc-200'
+                            : 'bg-slate-900 text-white hover:bg-slate-800'
+                        }`}
                       >
                         <span>{ui.mock7BtnEnter}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                       <button
                         onClick={() => goToSlide(0)}
-                        className="px-6 py-2.5 rounded-full text-xs font-semibold bg-zinc-800 text-white hover:bg-zinc-700 transition-all cursor-pointer border border-zinc-700"
+                        className={`px-6 py-2.5 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
+                          isDark
+                            ? 'bg-zinc-800 text-white hover:bg-zinc-700 border-zinc-700'
+                            : 'bg-white text-slate-800 hover:bg-slate-100 border-slate-200/90 shadow-sm'
+                        }`}
                       >
                         {ui.mock7BtnReplay}
                       </button>
@@ -1073,13 +1247,17 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
                     .replace('{total}', String(slides.length))}
                 </span>
               </div>
-              <p className="text-xs md:text-sm leading-relaxed text-zinc-300 font-normal">
+              <p className={`text-xs md:text-sm leading-relaxed font-normal ${
+                isDark ? 'text-zinc-300' : 'text-slate-700'
+              }`}>
                 {currentSlideData.speakerNotes}
               </p>
             </div>
             <button
               onClick={() => setShowSpeakerNotes(false)}
-              className="text-zinc-500 hover:text-zinc-200 text-xs cursor-pointer p-1"
+              className={`text-xs cursor-pointer p-1 transition-colors ${
+                isDark ? 'text-zinc-500 hover:text-zinc-200' : 'text-slate-400 hover:text-slate-800'
+              }`}
             >
               ✕
             </button>
@@ -1132,7 +1310,11 @@ export const KeynotePresentation: React.FC<KeynotePresentationProps> = ({
         {/* Next Slide / Step */}
         <button
           onClick={handleNext}
-          className="flex items-center gap-1.5 px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-slate-950 hover:bg-zinc-200 shadow-md font-sans"
+          className={`flex items-center gap-1.5 px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer shadow-md font-sans ${
+            isDark
+              ? 'bg-white text-slate-950 hover:bg-zinc-200'
+              : 'bg-slate-900 text-white hover:bg-slate-800'
+          }`}
         >
           <span>
             {currentStep < currentSlideData.steps.length - 1

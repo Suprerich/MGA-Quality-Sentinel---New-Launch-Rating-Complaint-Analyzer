@@ -106,7 +106,7 @@ export const InspectionRunnerModal: React.FC<InspectionRunnerModalProps> = ({
     });
 
     const summaryMsg = isEn
-      ? `Audit scan completed: Successfully inspected ${updated.length} channel listings, discovered ${lowCount} products with ratings below ${threshold.toFixed(1)}★ threshold.`
+      ? `Audit scan completed: Successfully inspected ${updated.length} channel listings, discovered ${lowCount} products with ratings below ${threshold.toFixed(1)} threshold.`
       : isTw
       ? `手動觸發巡檢完成：成功核查 ${updated.length} 款渠道商品，發現 ${lowCount} 款商品評分低於 ${threshold.toFixed(1)} 警戒線。`
       : `手动触发巡检完成：成功核查 ${updated.length} 款渠道商品，发现 ${lowCount} 款商品评分低于 ${threshold.toFixed(1)} 警戒线。`;
@@ -203,7 +203,7 @@ export const InspectionRunnerModal: React.FC<InspectionRunnerModalProps> = ({
                 </label>
 
                 <div className="text-slate-500 font-mono">
-                  &lt; {threshold.toFixed(1)} ★
+                  &lt; {threshold.toFixed(1)}
                 </div>
               </div>
 

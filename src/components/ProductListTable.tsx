@@ -213,13 +213,13 @@ export const ProductListTable: React.FC<ProductListTableProps> = ({
 
                     {/* Name */}
                     <td className="py-3.5 px-4">
-                      <div className="flex items-center gap-1.5">
+                      <div className="relative inline-flex items-start">
                         {p.isNewLaunch && (
-                          <span className="text-[10px] font-semibold text-slate-800 bg-slate-100 px-2 py-0.5 rounded-full">
+                          <sup className="text-[9.5px] font-bold text-[#F37021] select-none leading-none mr-1 -top-0.5 relative tracking-tight shrink-0">
                             {t.tagNewLaunch}
-                          </span>
+                          </sup>
                         )}
-                        <span className="font-medium text-slate-900 hover:text-rose-600 transition-colors">
+                        <span className="font-medium text-slate-900 hover:text-[#F37021] transition-colors leading-snug">
                           {p.name}
                         </span>
                       </div>
@@ -237,11 +237,11 @@ export const ProductListTable: React.FC<ProductListTableProps> = ({
                     {/* Rating */}
                     <td className="py-3.5 px-3 text-center tabular-nums">
                       <div
-                        className={`text-sm font-semibold font-mono ${
-                          isAlert ? 'text-rose-600 font-bold' : 'text-slate-900'
+                        className={`text-sm font-mono ${
+                          isAlert ? 'text-rose-600 font-bold' : 'text-[#0071e3] font-semibold'
                         }`}
                       >
-                        {p.rating.toFixed(1)} ★
+                        {p.rating.toFixed(1)}
                       </div>
                       <div className="text-[10px] text-slate-400">
                         / 5.0
@@ -256,11 +256,11 @@ export const ProductListTable: React.FC<ProductListTableProps> = ({
                     {/* Alert Status */}
                     <td className="py-3.5 px-3 text-center">
                       {isAlert ? (
-                        <span className="inline-block px-2.5 py-0.5 text-[11px] font-semibold text-rose-700 bg-rose-50 border border-rose-200/60 rounded-full">
+                        <span className="inline-block text-xs font-semibold text-rose-600">
                           {format(t.statusAlert, { t: threshold.toFixed(1) })}
                         </span>
                       ) : (
-                        <span className="inline-block px-2.5 py-0.5 text-[11px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200/60 rounded-full">
+                        <span className="inline-block text-xs font-semibold text-[#0071e3]">
                           {t.statusOk}
                         </span>
                       )}

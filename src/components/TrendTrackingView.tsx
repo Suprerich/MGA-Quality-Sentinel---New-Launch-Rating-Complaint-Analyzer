@@ -120,7 +120,7 @@ export const TrendTrackingView: React.FC<TrendTrackingViewProps> = ({
                                   isBelow ? 'text-rose-600 font-bold' : 'text-slate-800'
                                 }`}
                               >
-                                {h.rating.toFixed(1)} ★
+                                {h.rating.toFixed(1)}
                               </span>
                               <span className="text-[9px] text-slate-400 font-mono">
                                 {h.date.slice(5)}
@@ -138,7 +138,7 @@ export const TrendTrackingView: React.FC<TrendTrackingViewProps> = ({
                   <td className="py-3.5 px-3 text-center font-mono tabular-nums">
                     <span
                       className={`text-sm ${
-                        isAlert ? 'text-rose-600 font-bold' : 'text-slate-900 font-medium'
+                        isAlert ? 'text-rose-600 font-bold' : 'text-[#0071e3] font-medium'
                       }`}
                     >
                       {p.rating.toFixed(1)}
@@ -152,17 +152,17 @@ export const TrendTrackingView: React.FC<TrendTrackingViewProps> = ({
                     {delta === null ? (
                       <span className="text-slate-300 font-mono text-[11px]">—</span>
                     ) : delta <= -0.2 ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-rose-700 bg-rose-50 border border-rose-200/60 px-2 py-0.5 rounded-full">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-rose-700">
                         <TrendingDown className="w-3.5 h-3.5" />
                         <span>▼ {delta}</span>
                       </span>
                     ) : delta >= 0.2 ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700">
                         <TrendingUp className="w-3.5 h-3.5" />
                         <span>▲ +{delta}</span>
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 text-[11px] text-slate-600 bg-slate-100 px-2 py-0.5 rounded-full">
+                      <span className="inline-flex items-center gap-1 text-[11px] text-slate-600">
                         <Minus className="w-3 h-3" />
                         <span>{delta >= 0 ? `+${delta}` : delta}</span>
                       </span>

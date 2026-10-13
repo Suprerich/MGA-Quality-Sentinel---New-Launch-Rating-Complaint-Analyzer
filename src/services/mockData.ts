@@ -516,47 +516,56 @@ export const INITIAL_PRODUCTS: ProductItem[] = [
     ]
   },
 
-  // 4. Rainbow High Winter Wonderland Sunny Madison - Rating 2.8 on Walmart CA (ALERT < 3.0)
+  // 4. Rainbow High Winter Wonderland Sunny Madison - Genuinely sold on US platforms (Target, Amazon US); unlisted as individual SKU on Walmart Canada
+
   {
-    id: 'prod-rh-winter-wmca',
+    id: 'prod-rh-winter-wmus',
     name: 'Rainbow High Winter Wonderland Fashion Doll Sunny Madison',
     brand: 'Rainbow High',
     series: 'Winter Wonderland',
     upc: '035051505389',
     model: '505389',
     isNewLaunch: true,
-    launchDate: '2026-09-15',
+    launchDate: '2024-07-26',
     countryOfOrigin: 'China',
-    platform: 'WMCA',
-    platformId: '6000208119933',
-    url: 'https://www.walmart.ca/en/ip/Rainbow-High-Winter-Sunny/6000208119933',
-    rating: 2.8,
-    reviewCount: 16,
-    lastCheckedAt: '2026-10-08T14:30:00Z',
-    status: 'ALERT',
-    mainIssue: 'Quality',
-    issueBreakdown: { 'Quality': 7, 'Damage': 4, 'Assembly / Instruction': 2 },
-    issueBreakdownText: 'Quality(7), Damage(4), Assembly / Instruction(2)',
+    platform: 'WMUS',
+    platformId: '901284712',
+    url: 'https://www.walmart.com/ip/Rainbow-High-Fashion-Doll-11-Sunny-Winter-Wonderland-Yellow/901284712',
+    rating: 4.8,
+    reviewCount: 93,
+    lastCheckedAt: '2026-10-12T19:00:00Z',
+    status: 'OK',
+    mainIssue: 'Function issue',
+    issueBreakdown: { 'Function issue': 4, 'Quality': 3, 'Assembly / Instruction': 2 },
+    issueBreakdownText: 'Function issue(4), Quality(3), Assembly / Instruction(2)',
     ratingHistory: [
-      { date: '2026-09-25', rating: 3.2, count: 5 },
-      { date: '2026-10-08', rating: 2.8, count: 16 }
+      { date: '2026-09-15', rating: 4.9, count: 48 },
+      { date: '2026-10-12', rating: 4.8, count: 93 }
     ],
     reviews: [
       createReview(
-        'rev-rh-1',
-        1,
-        'Sophie L.',
-        '2026-10-03',
-        'Snow mechanism leaked all over doll dress',
-        'The magic snow mechanism broke and leaked liquid all over the dress. Paint on the face was also peeling. Very bad quality control for a $35 doll.'
+        'rev-rh-wm-1',
+        5,
+        'GrandparentBuyer',
+        '2024-09-18',
+        'Granddaughter loved Sunny!',
+        'Bought this for my 9-year-old granddaughter and she loved the bright yellow winter coat and accessories. The crimped hair is very pretty and long.'
       ),
       createReview(
-        'rev-rh-2',
-        2,
-        'Danielle M.',
-        '2026-09-28',
-        'Doll leg snapped off out of box',
-        'Taking the doll out of the plastic ties, the left knee joint snapped. Fell apart immediately. Brittle plastic.'
+        'rev-rh-wm-2',
+        4,
+        'ToyReviewMom',
+        '2024-08-22',
+        'Snow expansion takes practice',
+        'The magic snow mechanism inside the jacket puffs up when you add water with the dropper, but it can be a bit messy. Definitely need adult supervision so the water does not leak everywhere.'
+      ),
+      createReview(
+        'rev-rh-wm-3',
+        3,
+        'DollCollector_CA',
+        '2024-08-10',
+        'A lot of tinsel in the hair',
+        'Beautiful face sculpt and glass eyes, but the hair has a lot of crunchy styling gel and metallic tinsel. The thick coat also makes posing her arms a little stiff.'
       )
     ]
   },
@@ -568,30 +577,38 @@ export const INITIAL_PRODUCTS: ProductItem[] = [
     upc: '035051505389',
     model: '505389',
     isNewLaunch: true,
-    launchDate: '2026-09-15',
+    launchDate: '2024-07-26',
     countryOfOrigin: 'China',
     platform: 'TARGET',
     platformId: '90123847',
-    url: 'https://www.target.com/p/rainbow-high-winter-sunny/-/A-90123847',
-    rating: 3.1,
-    reviewCount: 34,
-    lastCheckedAt: '2026-10-08T14:30:00Z',
+    url: 'https://www.target.com/p/rainbow-high-winter-wonderland-sunny/-/A-90123847',
+    rating: 4.7,
+    reviewCount: 78,
+    lastCheckedAt: '2026-10-12T19:00:00Z',
     status: 'OK',
     mainIssue: 'Quality',
-    issueBreakdown: { 'Quality': 9, 'Damage': 3 },
-    issueBreakdownText: 'Quality(9), Damage(3)',
+    issueBreakdown: { 'Quality': 5, 'Function issue': 3, 'Assembly / Instruction': 2 },
+    issueBreakdownText: 'Quality(5), Function issue(3), Assembly / Instruction(2)',
     ratingHistory: [
-      { date: '2026-09-22', rating: 3.4, count: 12 },
-      { date: '2026-10-08', rating: 3.1, count: 34 }
+      { date: '2026-09-10', rating: 4.8, count: 35 },
+      { date: '2026-10-12', rating: 4.7, count: 78 }
     ],
     reviews: [
       createReview(
         'rev-rh-tgt-1',
-        2,
+        5,
+        'Brianna K.',
+        '2024-09-05',
+        'Gorgeous fashion doll and moldable snowman',
+        'Sunny Madison is stunning in yellow! The snowman mold and moldable sand kit kept my daughter entertained for hours. Doll stand included is a plus.'
+      ),
+      createReview(
+        'rev-rh-tgt-2',
+        3,
         'Rachel V.',
-        '2026-10-01',
-        'Hair is stiff and crunchy',
-        'Hair was full of rock-hard gel and began falling out when brushed. Expected better quality from Rainbow High.'
+        '2024-08-29',
+        'Hair requires wash out of box',
+        'The doll base is pretty and articulated, but her yellow curls were quite stiff with product out of the box. Had to wash the hair before styling.'
       )
     ]
   },
@@ -603,23 +620,40 @@ export const INITIAL_PRODUCTS: ProductItem[] = [
     upc: '035051505389',
     model: '505389',
     isNewLaunch: true,
-    launchDate: '2026-09-15',
+    launchDate: '2024-07-26',
     countryOfOrigin: 'China',
     platform: 'AMZUS',
     platformId: 'B0CP987DEF',
     url: 'https://www.amazon.com/dp/B0CP987DEF',
-    rating: 3.3,
-    reviewCount: 58,
-    lastCheckedAt: '2026-10-08T14:30:00Z',
+    rating: 4.6,
+    reviewCount: 112,
+    lastCheckedAt: '2026-10-12T19:00:00Z',
     status: 'OK',
     mainIssue: 'Quality',
-    issueBreakdown: { 'Quality': 12, 'Damage': 5 },
-    issueBreakdownText: 'Quality(12), Damage(5)',
+    issueBreakdown: { 'Quality': 6, 'Function issue': 4, 'Packaging': 2 },
+    issueBreakdownText: 'Quality(6), Function issue(4), Packaging(2)',
     ratingHistory: [
-      { date: '2026-09-20', rating: 3.6, count: 18 },
-      { date: '2026-10-08', rating: 3.3, count: 58 }
+      { date: '2026-09-15', rating: 4.7, count: 60 },
+      { date: '2026-10-12', rating: 4.6, count: 112 }
     ],
-    reviews: []
+    reviews: [
+      createReview(
+        'rev-rh-amz-1',
+        5,
+        'Samantha J.',
+        '2024-09-22',
+        'Super detailed winter outfit',
+        'Great gift! The long jacket, wrap skirt, earmuffs, and hot cocoa cup accessories are so cute. Fast shipping from Amazon.'
+      ),
+      createReview(
+        'rev-rh-amz-2',
+        4,
+        'Collector_Mark',
+        '2024-09-02',
+        'Fun gimmick, coat is very bulky',
+        'The water-activated magic snow works as advertised. The coat is quite thick which limits elbow movement, but overall a solid addition to Rainbow High.'
+      )
+    ]
   },
 
   // 5. Bratz Babyz Jade - Stable collector item

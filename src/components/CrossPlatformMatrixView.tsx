@@ -162,11 +162,11 @@ export const CrossPlatformMatrixView: React.FC<CrossPlatformMatrixViewProps> = (
                 return (
                   <tr key={g.name} className="hover:bg-slate-50/60 transition-colors">
                     <td className="py-3.5 px-5 font-medium text-slate-900">
-                      <div className="flex items-center gap-1.5">
+                      <div className="relative inline-flex items-start">
                         {g.isNewLaunch && (
-                          <span className="text-[10px] font-semibold text-slate-900 bg-slate-100 px-2 py-0.5 rounded-full">
+                          <sup className="text-[9.5px] font-bold text-[#F37021] select-none leading-none mr-1 -top-0.5 relative tracking-tight shrink-0">
                             {t.tagNewLaunch}
-                          </span>
+                          </sup>
                         )}
                         <span className="truncate max-w-[280px] font-medium" title={g.name}>
                           {g.name}
@@ -198,13 +198,15 @@ export const CrossPlatformMatrixView: React.FC<CrossPlatformMatrixViewProps> = (
                           onClick={() => onSelectProduct(p)}
                           className="py-3.5 px-2 text-center tabular-nums cursor-pointer group"
                         >
-                          <div className={`inline-flex flex-col items-center justify-center px-2.5 py-1 rounded-full transition-all ${
-                            isBelow
-                              ? 'bg-rose-50 text-rose-700 border border-rose-200/60 font-semibold group-hover:bg-rose-100'
-                              : 'text-slate-800 group-hover:bg-slate-100'
-                          }`}>
-                            <span className="text-xs font-mono font-medium">
-                              {p.rating.toFixed(1)} ★
+                          <div className="inline-flex flex-col items-center justify-center transition-all">
+                            <span
+                              className={`text-xs font-mono ${
+                                isBelow
+                                  ? 'text-rose-600 font-bold'
+                                  : 'text-[#0071e3] font-semibold'
+                              }`}
+                            >
+                              {p.rating.toFixed(1)}
                             </span>
                             <span className="text-[10px] text-slate-400 font-normal">
                               ({p.reviewCount})
@@ -216,10 +218,10 @@ export const CrossPlatformMatrixView: React.FC<CrossPlatformMatrixViewProps> = (
 
                     <td className="py-3.5 px-4 text-center font-mono tabular-nums">
                       <span
-                        className={`inline-block px-3 py-0.5 text-xs font-semibold rounded-full ${
+                        className={`inline-block text-xs font-semibold ${
                           belowCount > 0
-                            ? 'bg-rose-100 text-rose-700'
-                            : 'bg-emerald-50 text-emerald-700'
+                            ? 'text-rose-600 font-bold'
+                            : 'text-[#0071e3]'
                         }`}
                       >
                         {belowCount}

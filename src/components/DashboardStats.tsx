@@ -54,7 +54,7 @@ export const DashboardStats: React.FC<DashboardStatsProps> = ({
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
-                &lt; {val.toFixed(1)} ★
+                &lt; {val.toFixed(1)}
               </button>
             ))}
           </div>

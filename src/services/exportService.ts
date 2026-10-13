@@ -85,8 +85,8 @@ export class ExportService {
       p.rating,
       p.reviewCount,
       p.rating < threshold
-        ? (isEn ? `ALERT (<${threshold.toFixed(1)}★)` : `ALERT (低于${threshold.toFixed(1)}分警戒)`)
-        : (isEn ? 'OK' : 'OK (正常)'),
+        ? (isEn ? `ALERT (<${threshold.toFixed(1)})` : `ALERT (低于${threshold.toFixed(1)}分警戒)`)
+        : 'OK',
       p.mainIssue,
       p.issueBreakdownText,
       p.countryOfOrigin,
@@ -143,7 +143,7 @@ export class ExportService {
       'Target',
       'Costco US',
       'Costco CA',
-      `Below ${threshold.toFixed(1)}★ Channels`,
+      `Below ${threshold.toFixed(1)} Channels`,
       'Lowest Rating',
       'Compliance Status'
     ] : isTw ? [
@@ -202,7 +202,7 @@ export class ExportService {
         hasRatings ? minRating.toFixed(1) : 'N/A',
         belowCount > 0
           ? (isEn ? `ALERT (${belowCount} Low)` : `ALERT (${belowCount}渠道低分)`)
-          : (isEn ? 'OK Compliant' : 'OK (合规)')
+          : 'OK'
       ];
     });
 
@@ -270,7 +270,7 @@ export class ExportService {
           complaintIndex++,
           p.name,
           PLATFORMS[p.platform]?.name || p.platform,
-          `${rev.rating} ★`,
+          `${rev.rating}.0 / 5.0`,
           rev.issueType,
           rev.severity,
           rev.sentiment,
@@ -345,7 +345,7 @@ export class ExportService {
       ],
       [],
       [isEn ? 'Audit Date' : '核查时间 (Inspection Date)', nowStr],
-      [isEn ? 'Alert Threshold' : '设定的评分警戒阈值 (Alert Threshold)', `< ${threshold.toFixed(1)} ★`]
+      [isEn ? 'Alert Threshold' : '设定的评分警戒阈值 (Alert Threshold)', `< ${threshold.toFixed(1)}`]
     ];
 
     const wsStats = XLSX.utils.aoa_to_sheet([defectStatHeaders, ...defectStatRows, ...summarySection]);
@@ -377,7 +377,7 @@ export class ExportService {
     }
 
     const headers = isEn
-      ? ['Product Name', 'UPC', 'Walmart US', 'Walmart CA', 'Amazon US', 'Amazon CA', 'Target', 'Costco US', 'Costco CA', `Below ${threshold.toFixed(1)}★`]
+      ? ['Product Name', 'UPC', 'Walmart US', 'Walmart CA', 'Amazon US', 'Amazon CA', 'Target', 'Costco US', 'Costco CA', `Below ${threshold.toFixed(1)} Channels`]
       : ['新品/商品名称', 'UPC', 'Walmart US', 'Walmart CA', 'Amazon US', 'Amazon CA', 'Target', 'Costco US', 'Costco CA', `低于${threshold.toFixed(1)}分渠道数`];
 
     let html = `<div style="font-family: Calibri, -apple-system, sans-serif; font-size: 13px; color: #1e293b;">`;
@@ -390,8 +390,8 @@ export class ExportService {
     }</h3>`;
     html += `<p style="color: #64748b; font-size: 12px; margin-top: 0;">${
       isEn
-        ? `Audited: ${new Date().toLocaleString()} | Alert Threshold: < ${threshold.toFixed(1)}★ | Format: Avg (Review Count)`
-        : `核查时间: ${new Date().toLocaleString()} | 警戒阈值: < ${threshold.toFixed(1)} 星 | 单元格格式: 平均分 (评价总数)`
+        ? `Audited: ${new Date().toLocaleString()} | Alert Threshold: < ${threshold.toFixed(1)} | Format: Avg (Review Count)`
+        : `核查时间: ${new Date().toLocaleString()} | 警戒阈值: < ${threshold.toFixed(1)} 分 | 单元格格式: 平均分 (评价总数)`
     }</p>`;
 
     html += `<table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse; font-size: 12px; width: 100%; border: 1px solid #cbd5e1;">`;
@@ -438,7 +438,7 @@ export class ExportService {
     if (alertProducts.length === 0) {
       html += `<li>${
         isEn
-          ? `All ${products.length} channel listings are operating above ${threshold.toFixed(1)}★ without compliance alerts.`
+          ? `All ${products.length} channel listings are operating above ${threshold.toFixed(1)} without compliance alerts.`
           : `全部核查的 ${products.length} 个渠道商品平均分均在 ${threshold.toFixed(1)} 分及以上，运行良好。`
       }</li>`;
     } else {
@@ -450,7 +450,7 @@ export class ExportService {
       });
 
       alertMap.forEach((prods, name) => {
-        const platNames = prods.map(p => `${PLATFORMS[p.platform]?.name || p.platform} (${p.rating}★)`).join(', ');
+        const platNames = prods.map(p => `${PLATFORMS[p.platform]?.name || p.platform} (${p.rating.toFixed(1)})`).join(', ');
         const mainIssues = Array.from(new Set(prods.map(p => p.mainIssue))).join(', ');
         html += `<li><b>${name}</b> ${
           isEn

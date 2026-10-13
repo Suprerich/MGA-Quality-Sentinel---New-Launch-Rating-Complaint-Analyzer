@@ -142,10 +142,10 @@ export const SchedulePanel: React.FC<SchedulePanelProps> = ({
                 disabled={!enabled}
                 className="w-full bg-slate-100/70 border-0 rounded-2xl p-2.5 text-xs text-slate-800 font-mono disabled:opacity-40 focus:outline-none focus:ring-1 focus:ring-slate-400"
               >
-                <option value={2.5}>&lt; 2.5 ★ ({isEn ? 'Critical Severity' : '特级严重预警'})</option>
-                <option value={3.0}>&lt; 3.0 ★ ({isEn ? 'Standard MGA Compliance Threshold - Recommended' : '标准 MGA 合规红线 - 推荐'})</option>
-                <option value={3.5}>&lt; 3.5 ★ ({isEn ? 'Early Caution' : '潜在风险关注'})</option>
-                <option value={4.0}>&lt; 4.0 ★ ({isEn ? 'Strict Inspection' : '高标准严格监管'})</option>
+                <option value={2.5}>&lt; 2.5 ({isEn ? 'Critical Severity' : '特级严重预警'})</option>
+                <option value={3.0}>&lt; 3.0 ({isEn ? 'Standard MGA Compliance Threshold - Recommended' : '标准 MGA 合规红线 - 推荐'})</option>
+                <option value={3.5}>&lt; 3.5 ({isEn ? 'Early Caution' : '潜在风险关注'})</option>
+                <option value={4.0}>&lt; 4.0 ({isEn ? 'Strict Inspection' : '高标准严格监管'})</option>
               </select>
             </div>
           </div>
@@ -235,10 +235,10 @@ export const SchedulePanel: React.FC<SchedulePanelProps> = ({
                   </td>
                   <td className="py-3.5 px-3 text-center font-mono tabular-nums">
                     <span
-                      className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
+                      className={`inline-block text-[11px] font-semibold ${
                         log.lowRatingAlertsCount > 0
-                          ? 'bg-rose-50 text-rose-700 border border-rose-200/60'
-                          : 'bg-emerald-50 text-emerald-700'
+                          ? 'text-rose-700'
+                          : 'text-emerald-700'
                       }`}
                     >
                       {log.lowRatingAlertsCount}
